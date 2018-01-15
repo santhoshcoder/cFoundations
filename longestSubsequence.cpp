@@ -1,3 +1,4 @@
+/* Program to find the longest word in D that is a subsequence of S */
 #include <iostream>
 using namespace std;
 int main() 
