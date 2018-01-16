@@ -4,44 +4,24 @@ using namespace std;
 int main() 
 {
   const int SIZE = 5;
-  string d[SIZE] = {"able", "ale", "apple", "bale", "kangaroo"},s = "abppplee",maxword;
-  int index,maxsubseq =0;
-  bool found = false;
-  //processing each string in D
-  for(int i=0;i<SIZE;i++)
+  string d[SIZE] = {"able", "ale", "apple", "bale", "kangaroo"},s = "abppplee",maxword = "";
+  for(int j=0;j<SIZE;j++)
   {
-    index = 0;
-    //Check if the string in d is a subsequence of s
-    for(int j=0;j<d[i].length();j++)
+    string w = d[j];
+    int count = 0;
+    int index = 0;
+    for(int i=0;i<s.length() && index <w.length();i++)
     {
-         for(int k=index;k<s.length();k++)
-         {
-             if(d[i][j] == s[k])
-              {
-                 found = true;
-                 index++;
-                 break;
-              }
-         }
-         if(!found)
-         {
-           break;
-         }
-         if(j != d[i].length() -1)
-          found = false;
+        if(w[index] == s[i])
+        {
+          index++;
+          count++;
+        }
     }
-    /*
-    if(found)
+    if(count == w.length() && maxword.length() < w.length())
     {
-      cout<<"One of the subsequence is: "<< d[i]<<endl;
+      maxword = w;  
     }
-    */
-    if(found && maxsubseq <d[i].length())
-      {
-        maxsubseq = d[i].length();
-        maxword   = d[i];
-        found = false;
-      }
   }
-  cout<<"LongestSubsequence is: "<<maxword<<endl;
+  cout<<"Longest subsequence is: "<< maxword<<endl;
 }
